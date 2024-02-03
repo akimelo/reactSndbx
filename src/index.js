@@ -156,13 +156,17 @@ document.getElementById("app").innerHTML = `
  * スプレッド構文 ...
  */
 // 配列の展開
-// const arr1 = [1, 2];
+// const array = [1, 2];
 // console.log(arr1);
 // console.log(...arr1);
 
-// const sumFunc = (num1, num2) => console.log(num1 + num2);
-// sumFunc(arr1[0], arr1[1]);
+// const sumFunc = (num1, num2) => num1 + num2;
+// [ arr1, arr2 ] = array;
+// sumFunc(arr1, arr2);
 // sumFunc(...arr1);
+// console.log(`answer=${sumFunc(...array)}`);
+// console.log(...array);
+// console.log([...array]);
 
 // まとめる
 // const arr2 = [1, 2, 3, 4, 5];
@@ -188,7 +192,19 @@ document.getElementById("app").innerHTML = `
 /**
  * mapやfilterを使った配列の処理
  */
-// const nameArr = ['田中', '山田', 'じゃけぇ'];
+const nameArr = ['田中', '山田', 'Aki'];
+
+const changeNameArr = nameArr.map((name) => {
+    if (name == "Aki") {
+        return `${name}さん`
+    }
+    else {
+        return name
+    }
+});
+
+console.log(changeNameArr)
+
 // for (let index = 0; index < nameArr.length; index++) {
 //   console.log(nameArr[index]);
 // }
