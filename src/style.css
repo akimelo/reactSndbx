@@ -1,5 +1,6 @@
 body {
     font-family: sans-serif;
+    color: #666;
   }
 
 input {
@@ -60,6 +61,21 @@ button:hover {
     align-items: center;
 }
   
+.todo-item {
+    margin: 6px;
+}
+
+.title {
+    text-align: center;
+    margin-top: 0;
+    font-weight: bold;
+}
+
+.list-row {
+    display: flex;
+    align-items: center;
+}
+
 .todo-item {
     margin: 6px;
 }
