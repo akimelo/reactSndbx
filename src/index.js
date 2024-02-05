@@ -8,6 +8,14 @@
 //   <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
 // </div>`;
 
+const closeList = () => {
+    alert("closeList");
+}
+
+const removeList = () => {
+    alert("removeList");
+}
+
 const makelist = (text) => {
     // make li tag
     const li = document.createElement("li");
@@ -23,9 +31,11 @@ const makelist = (text) => {
 
     const completeButton = document.createElement("button");
     completeButton.innerText = "done";
+    completeButton.addEventListener("click", closeList);
     
     const removeButton = document.createElement("button");
     removeButton.innerText = "remove";
+    removeButton.addEventListener("click", removeList);
 
     div.appendChild(p);
     div.appendChild(completeButton);
@@ -36,7 +46,7 @@ const makelist = (text) => {
     const ul = document.getElementById("incomplete-list");
     ul.appendChild(li);
 
-    console.log(li);
+    // console.log(li);
 }
 
 const onclickAdd = () => {
