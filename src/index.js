@@ -8,12 +8,51 @@
 //   <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
 // </div>`;
 
-const closeList = () => {
-    alert("closeList");
+const reassignList = (reassignButton, div) => {
+    const reassignTarget = reassignButton.closest("li");
+
+    reassignButton.remove();
+
+    const completeButton = document.createElement("button");
+    completeButton.innerText = "done";
+    completeButton.addEventListener("click", () => { completeList(completeButton, div); });
+
+    const removeButton = document.createElement("button");
+    removeButton.innerText = "remove";
+    removeButton.addEventListener("click", () => { removeList(removeButton); });
+
+    div.appendChild(completeButton);
+    div.appendChild(removeButton);
+
+    const moveList = document.getElementById("incomplete-list");
+
+    document.getElementById("complete-list").removeChild(reassignTarget);
+    moveList.appendChild(reassignTarget);
+
 }
 
-const removeList = () => {
-    alert("removeList");
+const completeList = (completeButton, div) => {
+    const completeTarget = completeButton.closest("li");
+
+    completeButton.nextElementSibling.remove();
+    completeButton.remove();
+
+    const reassignButton = document.createElement("button");
+    reassignButton.innerText = "reassign";
+    reassignButton.addEventListener("click", () => { reassignList(reassignButton, div); });
+
+    div.appendChild(reassignButton);
+
+    const moveList = document.getElementById("complete-list");
+    // console.log(completeTarget);
+    document.getElementById("incomplete-list").removeChild(completeTarget);
+    moveList.appendChild(completeTarget);
+}
+
+const removeList = (removeButton) => {
+    const removeTarget = removeButton.closest("li");
+    // console.log(removeTarget);
+    document.getElementById("incomplete-list").removeChild(removeTarget);
 }
 
 const makelist = (text) => {
@@ -31,11 +70,11 @@ const makelist = (text) => {
 
     const completeButton = document.createElement("button");
     completeButton.innerText = "done";
-    completeButton.addEventListener("click", closeList);
+    completeButton.addEventListener("click", () => { completeList(completeButton, div); });
     
     const removeButton = document.createElement("button");
     removeButton.innerText = "remove";
-    removeButton.addEventListener("click", removeList);
+    removeButton.addEventListener("click", () => { removeList(removeButton); });
 
     div.appendChild(p);
     div.appendChild(completeButton);
